@@ -1,0 +1,7 @@
+{
+  "server": {
+    "host": "localhost",
+    "port": 3500,
+    "baseurl": "http://localhost:3500"
+  }
+}
