@@ -105,6 +105,11 @@ export default {
           href: "/Feedback",
           icon: "mdi-message-text",
         },
+        {
+          title: "Scheduler",
+          href: "/Scheduler",
+          icon: "mdi-calendar",
+        },
       ],
     };
   },

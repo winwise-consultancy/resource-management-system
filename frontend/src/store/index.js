@@ -19,6 +19,8 @@ export default new Vuex.Store({
         WorkOverviewPercentageItems: [],
         UpdatedWorkDetailsItems: new Map(),
         Organization: {},
+        TreeData: [],
+        TreeDataId: 0,
         FeedbackList: [],
     },
     actions,

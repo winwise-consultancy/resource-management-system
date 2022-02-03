@@ -149,6 +149,43 @@ function loadOrganizationData(state) {
     state.OrganizationData = OrganizationData;
 }
 
+function onboard(state, DepartmentName, TeamName, EmployeeName) {
+    let Department = state.TreeData.find(
+        function (e) {
+            return e.name === DepartmentName
+        });
+    if (!Department) {
+        Department = { id: state.TreeDataId++, name: DepartmentName, children: [] }
+        state.TreeData.push(Department)
+    }
+
+    let Team = Department.children.find(
+        function (e) {
+            return e.name === TeamName
+        });
+
+    if (!Team) {
+        Team = { id: state.TreeDataId++, name: TeamName, children: [] }
+        Department.children.push(Team)
+    }
+
+    // ToDo : remove
+    Team.children.push({
+        id: state.TreeDataId++, name: EmployeeName, events: [{
+            name: "Departmental Internal Work",
+            start: "2022-02-" + state.TreeDataId + " 00:00:00",
+            end: "2022-02-" + (state.TreeDataId + 4) + " 23:59:59",
+            color: "cyan",
+        }]
+    })
+}
+
+function loadTreeView(state) {
+    state.WorkDetailsItems.filter(function (elements) {
+        onboard(state, elements["Department"], elements["Team"], elements["Employee Name"])
+    });
+}
+
 function loadFeedbackData(state) {
     state.FeedbackList = FeedbackData
 }
@@ -160,10 +197,11 @@ function load(state) {
     loadWorkOverviewPersonDaysData(state)
     loadWorkOverviewPercentageData(state)
     loadOrganizationData(state)
+    loadTreeView(state)
     loadFeedbackData(state)
     state.isFetching = false
 }
 
 export default {
-    load, computeBandwidth
+    load, computeBandwidth, onboard
 }

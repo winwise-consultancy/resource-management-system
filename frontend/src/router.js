@@ -4,6 +4,7 @@ import Welcome from "./components/Welcome.vue"
 import WorkOverview from "./components/WorkOverview.vue";
 import WorkDetails from "./components/WorkDetails.vue";
 import Feedback from "./components/Feedback.vue"
+import Scheduler from "./components/Scheduler.vue"
 
 Vue.use(Router);
 
@@ -16,5 +17,6 @@ export default new Router({
     { path: "/WorkOverview", name: "WorkOverview", component: WorkOverview, },
     { path: "/WorkDetails", name: "WorkDetails", component: WorkDetails, },
     { path: "/Feedback", name: "Feedback", component: Feedback, },
+    { path: "/Scheduler", name: "Scheduler", component: Scheduler, },
   ],
 });
